@@ -1,8 +1,37 @@
-import React from 'react'
-
+import { useState } from "react"
 function Addnewdoctor() {
+  const [name,setName]=useState('')
+  const [age,setAge]=useState('')
+  const [gender,setGender]=useState('')
+  const [specialization,setSpecialization]=useState('')
+  const [salary,setSalary]=useState('')
+
+  const [newdoctor,setNewdoctor]=useState('')
+
+  function handlesubmit(e){
+    e.preventDefault()
+    let formdata={
+      name,age,gender,specialization,salary
+    }
+    setNewdoctor(formdata)
+    console.log(formdata)
+  }
   return (
-    <div>Addnewdoctor</div>
+    <div>
+      <h1>Add new doctor</h1>
+      <form className='form-container'  onSubmit={handlesubmit}>
+        <input value={name} onChange={(e)=>setName(e.target.value)} type="text" className='text-field' placeholder='Enter Doctor Name' />
+        <input value={age} onChange={(e)=>setAge(e.target.value)} type="text" className='text-field' placeholder='Enter Age' />
+        <select value={gender} name="" id="" onChange={(e)=>setGender(e.target.value)}>
+          <option>Select your gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">FeMale</option>
+        </select>
+        <input value={specialization}  onChange={(e)=>setSpecialization(e.target.value)} type="text" className='text-field' placeholder='Enter Specialization' />
+        <input value={salary} onChange={(e)=>setSalary(e.target.value)} type="text"  className='text-field' placeholder='Enter Salary' />
+        <button type='submit'>Add Doctor</button>
+      </form>
+    </div>
   )
 }
 

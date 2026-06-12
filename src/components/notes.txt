@@ -1,0 +1,25 @@
+why react
+componetn based
+spa
+virtual dom
+
+props
+props are read only inputs
+used to pass information from parent to child
+
+state
+state is like a variable it is used to manage
+dynamic nature of a component
+component rerenders whenever the state changes
+
+how to define state
+import {useState} from 'react'
+
+const [state,setState]=useState(initialvalu)
+
+state - which holds initial value
+setState- it is a function which changes the state
+
+const [count,setCount]=useState(0)
+
+<button onClick={()=>setCount(count+1)}>inc</button>

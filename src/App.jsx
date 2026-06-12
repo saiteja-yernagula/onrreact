@@ -2,10 +2,14 @@ import Navbar from './components/Navbar'
 import './components/styles.css'
 import Section from './components/Section'
 import Doctorcard from './components/Doctorcard'
+import Addnewdoctor from './components/Addnewdoctor'
+// import { useState } from 'react'
 function App() {
- 
+//  let [count,setCount]=useState(0)
   return (
    <div>
+    {/* {count}
+    <button onClick={()=>setCount(count+1)}>inc</button> */}
     <Navbar/>
     <Section/>
 
@@ -19,6 +23,7 @@ function App() {
     </div>
 
     {/* <Addnewdoctor/> */}
+    <Addnewdoctor/>
 
 
    </div>
