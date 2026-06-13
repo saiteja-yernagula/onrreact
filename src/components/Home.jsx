@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react"
-
+import Doctorcard from './Doctorcard'
 function Home({newdoctor}) {
   const [doctors,setDoctors]=useState([])
   function fetchdata(){
@@ -31,14 +31,20 @@ function Home({newdoctor}) {
         salary: 5000000,
       },
     ];
-    setDoctors(data)
+   setDoctors(data)
   }
-  
+
   useEffect(()=>{
     fetchdata()
   },[])
   return (
-    <div>Home</div>
+    <div className='doctorparent'>
+     {doctors.length>0? (doctors.map((doctor)=>{
+        return (
+          <Doctorcard key={doctor.id} name={doctor.name} gender={doctor.gender} specialization={doctor.specialization}/>
+        )
+      })): <h1>No Doctors Found</h1>}
+    </div>
   )
 }
 

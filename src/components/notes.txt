@@ -50,3 +50,18 @@ it will run only when there is a change in dependency
 useEffect(()=>{
      console.log('running')
 },[apidata])
+
+
+map 
+it is used for rendering a list
+map() is a JavaScript array method used to iterate over arrays and
+return UI elements dynamically.
+
+key
+A key is a unique identifier used by React to efficiently update list items.
+
+
+conditional rendering
+
+{condtion? (<comp1>): (<comp2>)}
+if condition is true comp1 is executed else comp2
