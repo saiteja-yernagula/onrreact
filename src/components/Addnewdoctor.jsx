@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Home from "./Home"
 function Addnewdoctor() {
   const [name,setName]=useState('')
   const [age,setAge]=useState('')
@@ -6,7 +7,7 @@ function Addnewdoctor() {
   const [specialization,setSpecialization]=useState('')
   const [salary,setSalary]=useState('')
 
-  const [newdoctor,setNewdoctor]=useState('')
+  const [newdoctor,setNewdoctor]=useState(null)
 
   function handlesubmit(e){
     e.preventDefault()
@@ -31,7 +32,9 @@ function Addnewdoctor() {
         <input value={salary} onChange={(e)=>setSalary(e.target.value)} type="text"  className='text-field' placeholder='Enter Salary' />
         <button type='submit'>Add Doctor</button>
       </form>
-    </div>
+
+      <Home newdoctor={newdoctor}/>
+    </div>  
   )
 }
 

@@ -4,8 +4,13 @@ import Section from './components/Section'
 import Doctorcard from './components/Doctorcard'
 import Addnewdoctor from './components/Addnewdoctor'
 // import { useState } from 'react'
+// import {useEffect} from 'react'
 function App() {
 //  let [count,setCount]=useState(0)
+//  useEffect(()=>{
+//   console.log('running ')
+//   console.log('api call')
+//  },[count])
   return (
    <div>
     {/* {count}
