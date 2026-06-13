@@ -32,7 +32,15 @@ function Home({newdoctor}) {
       },
     ];
    setDoctors(data)
+
   }
+  
+  useEffect(()=>{
+    if(newdoctor){
+      setDoctors(prev=>[...prev,newdoctor])
+    }
+
+  },[newdoctor])
 
   useEffect(()=>{
     fetchdata()

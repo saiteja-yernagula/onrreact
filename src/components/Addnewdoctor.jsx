@@ -12,7 +12,7 @@ function Addnewdoctor() {
   function handlesubmit(e){
     e.preventDefault()
     let formdata={
-      name,age,gender,specialization,salary
+      name,age,gender,specialization,salary,id:Date.now()
     }
     setNewdoctor(formdata)
     console.log(formdata)
