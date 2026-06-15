@@ -2,6 +2,9 @@ import { useEffect,useState } from "react"
 import Doctorcard from './Doctorcard'
 function Home({newdoctor}) {
   const [doctors,setDoctors]=useState([])
+
+  const [search,setSearch]=useState("")
+  const [specialization,setSpecialization]=useState('')
   function fetchdata(){
     let data=[
       {
@@ -45,13 +48,33 @@ function Home({newdoctor}) {
   useEffect(()=>{
     fetchdata()
   },[])
+
+  const filteredarray=doctors.filter((val)=>{
+    return (
+    val.name.toLowerCase().includes(search.toLowerCase())
+    &&
+    (specialization=="" || val.specialization==specialization)
+    )
+
+  })
   return (
+    <div>
+    <div className='filters'>
+    <input value={search}  onChange={(e)=>setSearch(e.target.value)} type="text" className='text-field' placeholder='search your doctor' />
+    <select value={specialization} onChange={(e)=>setSpecialization(e.target.value)} name="" id="">
+      <option value="">Select specialization</option>
+      <option value="Bones">bones</option>
+      <option value="Heart">heart</option>
+      <option value="Muscles">muscles</option>
+    </select>
+    </div>
     <div className='doctorparent'>
-     {doctors.length>0? (doctors.map((doctor)=>{
+     {filteredarray.length>0? (filteredarray.map((doctor)=>{
         return (
           <Doctorcard key={doctor.id} name={doctor.name} gender={doctor.gender} specialization={doctor.specialization}/>
         )
       })): <h1>No Doctors Found</h1>}
+    </div>
     </div>
   )
 }

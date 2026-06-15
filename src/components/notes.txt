@@ -65,3 +65,9 @@ conditional rendering
 
 {condtion? (<comp1>): (<comp2>)}
 if condition is true comp1 is executed else comp2
+
+
+filter
+it is used to apply boolean function for every element and returns
+filtered array
+
