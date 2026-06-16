@@ -55,8 +55,8 @@ function Home({newdoctor}) {
     &&
     (specialization=="" || val.specialization==specialization)
     )
-
   })
+  
   return (
     <div>
     <div className='filters'>
