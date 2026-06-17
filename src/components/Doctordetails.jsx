@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-
+import axios from "axios"
 function Doctordetails() {
   const {id}=useParams()
   let [doctor,setDoctor]=useState({})
@@ -8,37 +8,11 @@ function Doctordetails() {
     fetchdata()
   },[])
 
-  function fetchdata(){
-    let data=[
-      {
-        id: 1,
-        name: "Teja",
-        age: 26,
-        gender: "Male",
-        specialization: "Muscles",
-        salary: 7000000,
-      },
+  async function   fetchdata(){
+  
+    const response=await axios.get('https://doc-back.onrender.com/doctors')
 
-      {
-        id: 2,
-        name: "Sam",
-        age: 26,
-        gender: "Male",
-        specialization: "Bones",
-        salary: 4000000,
-      },
-
-      {
-        id: 3,
-        name: "Anu",
-        age: 25,
-        gender: "Female",
-        specialization: "Heart",
-        salary: 5000000,
-      },
-    ];
-
-    let finddoctor=data.find(val=>{
+    let finddoctor=response.data.find(val=>{
         return val.id==id
     })
     setDoctor(finddoctor)
