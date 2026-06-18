@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react"
 import Doctorcard from './Doctorcard'
 import axios from "axios"
-function Home({newdoctor}) {
+function Home({newdoctor,deletedata,updatedata}) {
   const [doctors,setDoctors]=useState([])
 
   const [search,setSearch]=useState("")
@@ -11,19 +11,16 @@ function Home({newdoctor}) {
     let response=await axios.get('https://doc-back.onrender.com/doctors')
     
    setDoctors(response.data)
-
   }
   
   useEffect(()=>{
-    if(newdoctor){
-      setDoctors(prev=>[...prev,newdoctor])
-    }
-
+    // if(newdoctor){
+    //   setDoctors(prev=>[...prev,newdoctor])
+    // }
+ fetchdata()
   },[newdoctor])
 
-  useEffect(()=>{
-    fetchdata()
-  },[])
+ 
 
   const filteredarray=doctors.filter((val)=>{
     return (
@@ -47,7 +44,7 @@ function Home({newdoctor}) {
     <div className='doctorparent'>
      {filteredarray.length>0? (filteredarray.map((doctor)=>{
         return (
-          <Doctorcard key={doctor.id} id={doctor.id} name={doctor.name} gender={doctor.gender} specialization={doctor.specialization}/>
+          <Doctorcard updatedata={updatedata} deletedata={deletedata} key={doctor.id} id={doctor.id} name={doctor.name} gender={doctor.gender} specialization={doctor.specialization}/>
         )
       })): <h1>No Doctors Found</h1>}
     </div>

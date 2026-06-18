@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-function Doctorcard({name,specialization,gender,id}) {//destructurin props
+function Doctorcard({name,specialization,gender,id,deletedata,updatedata}) {//destructurin props
     // props are the read only inputs used to pass informatin
     // to the child component-props is an object
     const navigate=useNavigate()
@@ -11,6 +11,8 @@ function Doctorcard({name,specialization,gender,id}) {//destructurin props
         <h3>{specialization}</h3>
         <p>{gender}</p>
         <button onClick={()=>navigate(`/doctor/${id}`)}>view details</button>
+        <button onClick={()=>deletedata(id)}>Del</button>
+        <button onClick={()=>updatedata(id)}>Upd</button>
     </div>
   )
 }   

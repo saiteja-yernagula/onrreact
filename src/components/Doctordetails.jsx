@@ -4,9 +4,7 @@ import axios from "axios"
 function Doctordetails() {
   const {id}=useParams()
   let [doctor,setDoctor]=useState({})
-  useEffect(()=>{
-    fetchdata()
-  },[])
+
 
   async function   fetchdata(){
   
@@ -17,6 +15,10 @@ function Doctordetails() {
     })
     setDoctor(finddoctor)
   }
+
+    useEffect(()=>{
+    fetchdata()
+  },[])
   return (
     <div>
         <h1>{doctor.id}</h1>
