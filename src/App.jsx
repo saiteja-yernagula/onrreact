@@ -6,22 +6,31 @@ import Addnewdoctor from './components/Addnewdoctor'
 import { Route, Routes } from 'react-router-dom'
 import Doctordetails from './components/Doctordetails'
 import Weather from './components/Weather'
-// import { useState } from 'react'
+import { useState } from 'react'
+import ProtectedRoute from './components/ProtectedRoute'
+import useCounter from './components/useCounter'
 // import {useEffect} from 'react'
 function App() {
-//  let [count,setCount]=useState(0)
-//  useEffect(()=>{
-//   console.log('running ')
-//   console.log('api call')
-//  },[count])
+  //  let [count,setCount]=useState(0)
+  //  useEffect(()=>{
+    //   console.log('running ')
+    //   console.log('api call')
+    //  },[count])
+    let [user,setUser]=useState(false)
+
+    let {count,increment,decrement}=useCounter()
   return (
    <div>
+    {count}
+    <button onClick={increment}>inc</button>
+    <button onClick={decrement}>dnc</button>
     {/* {count}
     <button onClick={()=>setCount(count+1)}>inc</button> */}
     <Navbar/>
+    <button onClick={()=>setUser(true)}>click to login</button>
     <Routes>
       <Route path='/' element={<Section/>}/>
-      <Route path='/add-doctor' element={ <Addnewdoctor/>}/>
+<Route path='/add-doctor' element={<ProtectedRoute user={user}> <Addnewdoctor/></ProtectedRoute> }/>
       <Route path='/doctor/:id' element={<Doctordetails/>} />
        <Route path='/weather' element={<Weather/>}/>
     </Routes>

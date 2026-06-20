@@ -1,7 +1,7 @@
-import { useEffect,useState } from "react"
+import { useEffect,useMemo,useState } from "react"
 import Doctorcard from './Doctorcard'
 import axios from "axios"
-function Home({newdoctor,deletedata,updatedata}) {
+function Home() {
   const [doctors,setDoctors]=useState([])
 
   const [search,setSearch]=useState("")
@@ -22,14 +22,18 @@ function Home({newdoctor,deletedata,updatedata}) {
 
  
 
-  const filteredarray=doctors.filter((val)=>{
-    return (
-    val.name.toLowerCase().includes(search.toLowerCase())
-    &&
-    (specialization=="" || val.specialization==specialization)
-    )
-  })
-  
+    const filteredarray=useMemo(()=>{
+      return doctors.filter((val)=>{
+        console.log('running')
+      return (
+      val.name.toLowerCase().includes(search.toLowerCase())
+      &&
+      (specialization=="" || val.specialization==specialization)
+      )
+    })
+    
+    },[doctors,search,specialization])
+
   return (
     <div>
     <div className='filters'>
@@ -44,7 +48,7 @@ function Home({newdoctor,deletedata,updatedata}) {
     <div className='doctorparent'>
      {filteredarray.length>0? (filteredarray.map((doctor)=>{
         return (
-          <Doctorcard updatedata={updatedata} deletedata={deletedata} key={doctor.id} id={doctor.id} name={doctor.name} gender={doctor.gender} specialization={doctor.specialization}/>
+          <Doctorcard  key={doctor.id} id={doctor.id} name={doctor.name} gender={doctor.gender} specialization={doctor.specialization}/>
         )
       })): <h1>No Doctors Found</h1>}
     </div>

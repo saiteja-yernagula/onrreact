@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-function Doctorcard({name,specialization,gender,id,deletedata,updatedata}) {//destructurin props
+function Doctorcard({name,specialization,gender,id}) {//destructurin props
     // props are the read only inputs used to pass informatin
     // to the child component-props is an object
     const navigate=useNavigate()

@@ -6,6 +6,11 @@ virtual dom
 props
 props are read only inputs
 used to pass information from parent to child
+1) normal props
+<Doctor name="teja"/>
+
+2) child prop
+<Doctor>Teja</Doctor>
 
 state
 state is like a variable it is used to manage
@@ -77,3 +82,24 @@ it is used for navigation or routing in react because in react we have spa so we
 anchor tag for spa 
 
 npm install react-router-dom
+
+
+advanced topics
+1) protected routes
+2) useMemo
+it is hook that is used to optimize the performance of an react 
+and it will memorize the expensive calculations and it will rerender only
+whenever dependencies changes
+3) custom hooks
+4) error handling methods
+
+
+props drilling
+   A      B      C
+ data    data    usecase of data
+
+
+to overcome----global state management
+useContext
+redux
+redux toolkit
